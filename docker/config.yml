@@ -27,6 +27,7 @@
           SCHEMA_REGISTRY_url:
           S3_enable: true
           S3_endpoint:
+          S3_default_region: eu-central-1
           S3_path_style_access: false
       # ========================================================================
       # Platys Services
