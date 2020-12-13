@@ -25,12 +25,15 @@ services:
       - ./conf/hadoop.env
     environment:
       CORE_CONF_fs_defaultFS: file:///tmp
+      CORE_CONF_fs_s3a_endpoint: s3.amazonaws.com
       CORE_CONF_fs_s3a_path_style_access: 'False'
+      HIVE_SITE_CONF_fs_s3a_endpoint: s3.amazonaws.com
       HIVE_SITE_CONF_fs_s3a_access_key: ${PLATYS_AWS_ACCESS_KEY:?PLATYS_AWS_ACCESS_KEY must be set either in .env or as an environment variable}
       HIVE_SITE_CONF_fs_s3a_secret_key: ${PLATYS_AWS_SECRET_ACCESS_KEY:?PLATYS_AWS_SECRET_ACCESS_KEY must be set either in .env or as an environment variable}
       HIVE_SITE_CONF_fs_s3a_path_style_access: 'False'
       HIVE_SITE_CONF_fs_s3a_impl: org.apache.hadoop.fs.s3a.S3AFileSystem
       SPARK_DEFAULTS_CONF_spark_hadoop_fs_s3a_impl: org.apache.hadoop.fs.s3a.S3AFileSystem
+      SPARK_DEFAULTS_CONF_spark_hadoop_fs_s3a_endpoint: s3.amazonaws.com
       SPARK_DEFAULTS_CONF_spark_hadoop_fs_s3a_path_style_access: 'False'
       SPARK_PUBLIC_DNS: ${PUBLIC_IP}
       INIT_DAEMON_STEP: setup_spark
@@ -67,12 +70,15 @@ services:
       SPARK_WORKER_WEBUI_PORT: '28111'
       SPARK_WORKER_OPTS: -Dspark.worker.cleanup.enabled=true -Dspark.worker.cleanup.appDataTtl=604800
       SPARK_PUBLIC_DNS: ${PUBLIC_IP}
+      CORE_CONF_fs_s3a_endpoint: s3.amazonaws.com
       CORE_CONF_fs_s3a_path_style_access: 'False'
+      HIVE_SITE_CONF_fs_s3a_endpoint: s3.amazonaws.com
       HIVE_SITE_CONF_fs_s3a_access_key: ${PLATYS_AWS_ACCESS_KEY:?PLATYS_AWS_ACCESS_KEY must be set either in .env or as an environment variable}
       HIVE_SITE_CONF_fs_s3a_secret_key: ${PLATYS_AWS_SECRET_ACCESS_KEY:?PLATYS_AWS_SECRET_ACCESS_KEY must be set either in .env or as an environment variable}
       HIVE_SITE_CONF_fs_s3a_path_style_access: 'False'
       HIVE_SITE_CONF_fs_s3a_impl: org.apache.hadoop.fs.s3a.S3AFileSystem
       SPARK_DEFAULTS_CONF_spark_hadoop_fs_s3a_impl: org.apache.hadoop.fs.s3a.S3AFileSystem
+      SPARK_DEFAULTS_CONF_spark_hadoop_fs_s3a_endpoint: s3.amazonaws.com
       SPARK_DEFAULTS_CONF_spark_hadoop_fs_s3a_path_style_access: 'False'
       SPARK_DEFAULTS_CONF_spark_jars_repositories:
       SPARK_DEFAULTS_CONF_spark_jars_packages:
@@ -107,12 +113,15 @@ services:
       SPARK_WORKER_WEBUI_PORT: '28112'
       SPARK_WORKER_OPTS: -Dspark.worker.cleanup.enabled=true -Dspark.worker.cleanup.appDataTtl=604800
       SPARK_PUBLIC_DNS: ${PUBLIC_IP}
+      CORE_CONF_fs_s3a_endpoint: s3.amazonaws.com
       CORE_CONF_fs_s3a_path_style_access: 'False'
+      HIVE_SITE_CONF_fs_s3a_endpoint: s3.amazonaws.com
       HIVE_SITE_CONF_fs_s3a_access_key: ${PLATYS_AWS_ACCESS_KEY:?PLATYS_AWS_ACCESS_KEY must be set either in .env or as an environment variable}
       HIVE_SITE_CONF_fs_s3a_secret_key: ${PLATYS_AWS_SECRET_ACCESS_KEY:?PLATYS_AWS_SECRET_ACCESS_KEY must be set either in .env or as an environment variable}
       HIVE_SITE_CONF_fs_s3a_path_style_access: 'False'
       HIVE_SITE_CONF_fs_s3a_impl: org.apache.hadoop.fs.s3a.S3AFileSystem
       SPARK_DEFAULTS_CONF_spark_hadoop_fs_s3a_impl: org.apache.hadoop.fs.s3a.S3AFileSystem
+      SPARK_DEFAULTS_CONF_spark_hadoop_fs_s3a_endpoint: s3.amazonaws.com
       SPARK_DEFAULTS_CONF_spark_hadoop_fs_s3a_path_style_access: 'False'
       SPARK_DEFAULTS_CONF_spark_jars_repositories:
       SPARK_DEFAULTS_CONF_spark_jars_packages:
@@ -149,6 +158,7 @@ services:
       SPARK_DEFAULTS_CONF_spark_jars_excludes:
       SPARK_DEFAULTS_CONF_spark_jars_ivySettings:
       SPARK_DEFAULTS_CONF_spark_hadoop_fs_s3a_impl: org.apache.hadoop.fs.s3a.S3AFileSystem
+      SPARK_DEFAULTS_CONF_spark_hadoop_fs_s3a_endpoint: s3.amazonaws.com
       SPARK_DEFAULTS_CONF_spark_hadoop_fs_s3a_path_style_access: 'False'
       SPARK_DEFAULTS_CONF_spark_sql_catalogImplementation: in-memory
       SPARK_DEFAULTS_CONF_spark_sql_warehouse_dir: s3a://hive-bucket/warehouse
@@ -177,15 +187,23 @@ services:
       - ./conf/hadoop.env
     environment:
       CORE_CONF_fs_defaultFS: file:///tmp
+      CORE_CONF_fs_s3a_endpoint: s3.amazonaws.com
       CORE_CONF_fs_s3a_path_style_access: 'False'
+      HIVE_SITE_CONF_fs_s3a_endpoint: s3.amazonaws.com
       HIVE_SITE_CONF_fs_s3a_access_key: ${PLATYS_AWS_ACCESS_KEY:?PLATYS_AWS_ACCESS_KEY must be set either in .env or as an environment variable}
       HIVE_SITE_CONF_fs_s3a_secret_key: ${PLATYS_AWS_SECRET_ACCESS_KEY:?PLATYS_AWS_SECRET_ACCESS_KEY must be set either in .env or as an environment variable}
       HIVE_SITE_CONF_fs_s3a_path_style_access: 'False'
       HIVE_SITE_CONF_fs_s3a_impl: org.apache.hadoop.fs.s3a.S3AFileSystem
       SPARK_DEFAULTS_CONF_spark_hadoop_fs_s3a_impl: org.apache.hadoop.fs.s3a.S3AFileSystem
+      SPARK_DEFAULTS_CONF_spark_hadoop_fs_s3a_endpoint: s3.amazonaws.com
       SPARK_DEFAULTS_CONF_spark_hadoop_fs_s3a_path_style_access: 'False'
       SPARK_HADOOP_FS_S3A_ACCESS_KEY: ${PLATYS_AWS_ACCESS_KEY:?PLATYS_AWS_ACCESS_KEY must be set either in .env or as an environment variable}
       SPARK_HADOOP_FS_S3A_SECRET_KEY: ${PLATYS_AWS_SECRET_ACCESS_KEY:?PLATYS_AWS_SECRET_ACCESS_KEY must be set either in .env or as an environment variable}
+      # for awscli & s3cmd
+      AWS_ACCESS_KEY_ID: ${PLATYS_AWS_ACCESS_KEY:?PLATYS_AWS_ACCESS_KEY must be set either in .env or as an environment variable}
+      AWS_SECRET_ACCESS_KEY: ${PLATYS_AWS_SECRET_ACCESS_KEY:-bKhWxVF3kQoLY9kFmt91l+tDrEoZjqnWXzY9Eza}
+      AWS_ENDPOINT: s3.amazonaws.com
+      AWS_DEFAULT_REGION: eu-central-1
       SPARK_DEFAULTS_CONF_spark_jars_repositories:
       SPARK_DEFAULTS_CONF_spark_jars_packages:
       SPARK_DEFAULTS_CONF_spark_jars_excludes:
@@ -216,7 +234,7 @@ services:
       - ./data-transfer:/data-transfer
       - ./plugins/spark/jars:/extra-jars
       - ./container-volume/spark/logs/:/var/log/spark/logs
-      - ./conf/s3cfg:/root/.s3cfg
+      - ./conf/s3cfg:/root/.s3cfg.template
       - ./conf/zeppelin/shiro.ini:/opt/zeppelin/conf/shiro.ini
       - ./conf/zeppelin/interpreter.json:/opt/zeppelin/conf/interpreter.json
       - ./conf/zeppelin/interpreter-setting.json:/opt/zeppelin/interpreter/spark/interpreter-setting.json
